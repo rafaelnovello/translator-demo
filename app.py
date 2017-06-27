@@ -2,16 +2,30 @@
 
 import helper
 
-from japronto import Application
 import tensorflow as tf
+from japronto import Application
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
-load_path = helper.load_params()
+
 _, (source_vocab_to_int, _), (_, target_int_to_vocab) = helper.load_preprocess()
+env = Environment(
+    loader=FileSystemLoader('templates'),
+    autoescape=select_autoescape(['html'])
+)
 
 
-def hello(request):
-    translated = translate('california is quiet during june .')
-    return request.Response(text=translated)
+def index(request):
+    if request.method == 'POST':
+        source = request.form.get('source', '')
+        translated = translate(source)
+    else:
+        translated = ''
+
+    template = env.get_template('index.html')
+    return request.Response(
+        text=template.render(translated=translated),
+        mime_type='text/html'
+    )
 
 
 def sentence_to_seq(sentence, vocab_to_int):
@@ -50,5 +64,5 @@ def translate(translate_sentence):
         return translated
 
 app = Application()
-app.router.add_route('/', hello)
+app.router.add_route('/', index, methods=['GET', 'POST'])
 app.run(debug=True)
