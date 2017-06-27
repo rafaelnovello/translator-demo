@@ -18,14 +18,6 @@ def load_preprocess():
 _, (source_vocab_to_int, _), (_, target_int_to_vocab) = load_preprocess()
 
 
-def load_params():
-    """
-    Load parameters from file
-    """
-    with open('checkpoint/params.p', mode='rb') as in_file:
-        return pickle.load(in_file)
-
-
 def sentence_to_seq(sentence, vocab_to_int):
     sentence = sentence.lower()
     unk_id = vocab_to_int.get('<UNK>')
