@@ -1,0 +1,7 @@
+.env
+*.pyc
+*.png
+*.data*
+*.index
+*.meta
+*.p
