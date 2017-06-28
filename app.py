@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+import os
 import helper
 
 from japronto import Application
@@ -41,4 +41,5 @@ def words(request):
 app = Application()
 app.router.add_route('/', index, methods=['GET', 'POST'])
 app.router.add_route('/vocab/', words, methods=['GET'])
-app.run(debug=True)
+port = os.environ.get('PORT') or 8080
+app.run(debug=True, port=int(port))
