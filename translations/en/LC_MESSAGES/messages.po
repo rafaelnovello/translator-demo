@@ -1,0 +1,71 @@
+# English translations for PROJECT.
+# Copyright (C) 2017 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-06-29 14:34-0300\n"
+"PO-Revision-Date: 2017-06-29 15:32-0300\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+"X-Generator: Poedit 1.5.4\n"
+
+#: templates/index.html:30
+msgid "Tradutor Inglês-Francês"
+msgstr "English to French Translator"
+
+#: templates/index.html:31
+msgid "Rede Neural Recorrente"
+msgstr "Recurrent Neural Net"
+
+#: templates/index.html:31
+msgid "treinada para traduzir inglês para francês (ou quase isso =P)."
+msgstr "trained to translate English to French (or almost that =P)."
+
+#: templates/index.html:39
+msgid "Traduzir"
+msgstr "Translate"
+
+#: templates/index.html:50
+msgid "Quer saber como isto funciona? Veja o"
+msgstr "Want to know how this works? See the"
+
+#: templates/index.html:50
+msgid "repositório do projeto!"
+msgstr "project repository!"
+
+#: templates/index.html:51
+msgid ""
+"Esta rede neural foi treinada com uma amostra limitada do vocabulário inglês,"
+msgstr ""
+"This neural network was trained with a limited sample of English vocabulary,"
+
+#: templates/index.html:51
+msgid "apenas 227 palavras,"
+msgstr "only 227 words,"
+
+#: templates/index.html:51
+msgid ""
+"para possibilitar o treinamento. Redes neurais deste tipo podem consumir "
+"semanas de processamento e milhares de dólares para alcançar resultados "
+"satisfatórios."
+msgstr ""
+"to enable training. Neural networks of this type can consume weeks of "
+"processing and thousands of dollars to achieve satisfactory results."
+
+#: templates/vocab.html:18
+msgid "Vocabulário - Tradutor Inglês-Francês"
+msgstr "Vocabulary - English-French Translator"
+
+#: templates/vocab.html:19
+msgid "Pequeno vocabulário usado no treinamento desta rede neural."
+msgstr "Small vocabulary used in the training of this neural network."

@@ -27,16 +27,16 @@
   </head>
   <body>
     <div class="row text-center">
-      <h1>Tradutor Inglês-Francês</h1>
-      <p><a href="https://en.wikipedia.org/wiki/Recurrent_neural_network" target="_blank">Rede Neural Recorrente</a> treinada para traduzir inglês para francês (ou quase isso =P).</p>
+      <h1>{{ _('Tradutor Inglês-Francês') }}</h1>
+      <p><a href="https://en.wikipedia.org/wiki/Recurrent_neural_network" target="_blank">{{ _('Rede Neural Recorrente') }}</a> {{ _('treinada para traduzir inglês para francês (ou quase isso =P).') }}</p>
     </div>
     <br>
     <div class="row text-center">
       <div class="col-xs-offset-1 col-xs-5">
         <form method="post" action="" enctype="multipart/form-data">
-          <textarea name="source" id="source" class="form-control input-lg" rows="5" cols="70"></textarea>
+          <textarea name="source" id="source" class="form-control input-lg" rows="5" cols="70">{{source}}</textarea>
           <div class="buttons">
-            <button id="submit">Enviar</button>
+            <button id="submit">{{ _('Traduzir') }}</button>
           </div>
         </form>
       </div>
@@ -47,8 +47,8 @@
     <br>
     <div class="row text-center">
       <div class="col-xs-offset-2 col-xs-8">
-        <p>Quer saber como isto funciona? Veja o<a href="https://github.com/rafaelnovello/translator" target="_blank"> repositório do projeto!</a></p>
-        <p>Esta rede neural foi treinada com uma amostra limitada do vocabulário inglês, <a href="/vocab/" target="_blank">apenas 227 palavras</a>, para possibilitar o treinamento. Redes neurais deste tipo podem consumir semanas de processamento e milhares de dólares para alcançar resultados satisfatórios.</p>
+        <p>{{ _('Quer saber como isto funciona? Veja o') }}<a href="https://github.com/rafaelnovello/translator" target="_blank"> {{ _('repositório do projeto!') }}</a></p>
+        <p>{{ _('Esta rede neural foi treinada com uma amostra limitada do vocabulário inglês,') }} <a href="/vocab/" target="_blank">{{ _('apenas 227 palavras,') }}</a> {{ _('para possibilitar o treinamento. Redes neurais deste tipo podem consumir semanas de processamento e milhares de dólares para alcançar resultados satisfatórios.') }}</p>
       </div>
     </div>
   </body>

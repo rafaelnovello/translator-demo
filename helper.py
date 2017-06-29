@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
-
+import os
 import pickle
 
 import tensorflow as tf
-from tinydb import TinyDB
-from tinyrecord import transaction
+from pymongo import MongoClient
+from babel.support import NullTranslations, Translations
+from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
 def load_preprocess():
@@ -17,6 +18,12 @@ def load_preprocess():
 
 _, (source_vocab_to_int, _), (_, target_int_to_vocab) = load_preprocess()
 
+env = Environment(
+    loader=FileSystemLoader('templates'),
+    autoescape=select_autoescape(['html']),
+    extensions=['jinja2.ext.i18n']
+)
+
 
 def sentence_to_seq(sentence, vocab_to_int):
     sentence = sentence.lower()
@@ -26,9 +33,9 @@ def sentence_to_seq(sentence, vocab_to_int):
 
 
 def save_translation(source, translated):
-    table = TinyDB('db.json').table('transactions')
-    with transaction(table) as tr:
-        tr.insert({'source': source, 'translated': translated})
+    db = get_db_connection()
+    _id = db.translation.insert({'source': source, 'translated': translated})
+    return _id
 
 
 def translate(translate_sentence):
@@ -58,3 +65,32 @@ def translate(translate_sentence):
         )[0]
         translated = " ".join([target_int_to_vocab[i] for i in translate_logits[:-1]])
         return translated
+
+
+def get_db_connection():
+    user = os.environ.get('DBUSER')
+    pwd = os.environ.get('DBPWD')
+    db = os.environ.get('DB')
+    uri = 'mongodb://%s:%s@ds139322.mlab.com:39322/%s?authMechanism=SCRAM-SHA-1' % (
+        user, pwd, db
+    )
+    cli = MongoClient(uri)
+    return cli[db]
+
+
+def simple_localizer(view):
+    def wrapper(request):
+        env.install_gettext_translations(NullTranslations())
+        langs = request.headers['Accept-Language']
+        pt_index = langs.find('pt')
+        en_index = langs.find('en')
+        if pt_index > en_index or pt_index == en_index == -1:
+            env.install_gettext_translations(
+                Translations.load(
+                    'translations/',
+                    locales=('en',),
+                    domain='messages'
+                )
+            )
+        return view(request, env)
+    return wrapper

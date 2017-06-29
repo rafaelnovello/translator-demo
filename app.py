@@ -3,31 +3,29 @@ import os
 import helper
 
 from japronto import Application
-from jinja2 import Environment, FileSystemLoader, select_autoescape
 
 
-env = Environment(
-    loader=FileSystemLoader('templates'),
-    autoescape=select_autoescape(['html'])
-)
-
-
-def index(request):
+@helper.simple_localizer
+def index(request, env):
     if request.method == 'POST':
         source = request.form.get('source', '')
         translated = helper.translate(source)
         helper.save_translation(source, translated)
     else:
-        translated = ''
+        source = translated = ''
 
     template = env.get_template('index.html')
     return request.Response(
-        text=template.render(translated=translated),
+        text=template.render(
+            source=source,
+            translated=translated
+        ),
         mime_type='text/html'
     )
 
 
-def words(request):
+@helper.simple_localizer
+def words(request, env):
     with open('words.txt', 'r') as f:
         words = f.readlines()
 
@@ -42,4 +40,4 @@ app = Application()
 app.router.add_route('/', index, methods=['GET', 'POST'])
 app.router.add_route('/vocab/', words, methods=['GET'])
 port = os.environ.get('PORT') or 8080
-app.run(debug=True, port=int(port))
+app.run(debug=True, port=int(port), reload=True)
