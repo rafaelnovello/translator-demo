@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
 "POT-Creation-Date: 2017-06-29 14:34-0300\n"
-"PO-Revision-Date: 2017-06-29 15:32-0300\n"
+"PO-Revision-Date: 2017-07-03 22:25-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -61,6 +61,23 @@ msgid ""
 msgstr ""
 "to enable training. Neural networks of this type can consume weeks of "
 "processing and thousands of dollars to achieve satisfactory results."
+
+#: templates/index.html:52
+msgid ""
+"Para obter melhores resultados, procure usar como base alguma sentença da"
+msgstr "For best results, try to use as base some sentence of"
+
+#: templates/index.html:52
+msgid "base de treinamento"
+msgstr "training dataset"
+
+#: templates/index.html:52
+msgid "com algumas alterações."
+msgstr "with some changes."
+
+#: templates/index.html:55
+msgid "Exemplos:"
+msgstr "Examples:"
 
 #: templates/vocab.html:18
 msgid "Vocabulário - Tradutor Inglês-Francês"
