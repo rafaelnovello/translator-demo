@@ -27,7 +27,7 @@ def index(request, env):
 @helper.simple_localizer
 def words(request, env):
     with open('words.txt', 'r') as f:
-        words = f.readlines()
+        words = sorted(f.readlines())
 
     template = env.get_template('vocab.html')
     return request.Response(
