@@ -1,6 +1,6 @@
 # English to French Translation App
 
-[Demo project]() for language translation with seq2seq tensorflow model.
+[Demo project](japronto-translator.herokuapp.com) for language translation with seq2seq tensorflow model.
 
 ## Install
 
