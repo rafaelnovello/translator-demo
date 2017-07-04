@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
 import pickle
+import datetime
 
 import tensorflow as tf
 from pymongo import MongoClient
@@ -34,7 +35,12 @@ def sentence_to_seq(sentence, vocab_to_int):
 
 def save_translation(source, translated):
     db = get_db_connection()
-    _id = db.translation.insert({'source': source, 'translated': translated})
+    now = datetime.datetime.utcnow()
+    _id = db.translation.insert({
+        'source': source,
+        'translated': translated,
+        'date_created': now
+    })
     return _id
 
 
